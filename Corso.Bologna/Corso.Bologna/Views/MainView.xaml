@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Corso.Bologna.Views.MainView"
+             BindingContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}">
+  <Grid Padding="10,20,10,20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Label Text="{Binding Title}"/>
+    <ListView IsRefreshing="{Binding IsReloading}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding ReloadCommad}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" ItemsSource="{Binding Recipes}" Grid.Row="1" HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+              </Grid.ColumnDefinitions>
+              <Image Source="{Binding PicturePath}" HeightRequest="100"/>
+              <Label Grid.Column="1" Text="{Binding Name}"></Label>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout Grid.Row="2">
+      <Label Text="{Binding SelectedRecipe.Name}" />
+      <Editor Text="{Binding SelectedIndex}"/>
+      <Button Command="{Binding ReloadCommad}" Text="Reload data"></Button>
+    </StackLayout>
+  </Grid>
+</ContentPage>

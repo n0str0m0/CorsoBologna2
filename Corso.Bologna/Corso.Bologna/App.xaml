@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bologna="clr-namespace:Corso.Bologna;assembly=Corso.Bologna"
+             xmlns:viewModels="clr-namespace:Corso.Bologna.ViewModels;assembly=Corso.Bologna"
+             x:Class="Corso.Bologna.App">
+  <Application.Resources>
+
+   <ResourceDictionary>
+     <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
+     <x:Double x:Key="TitleFontSize">30</x:Double>
+     <Color x:Key="BrandColor">Red</Color>
+     <Style TargetType="Label" x:Key="TitleStyle">
+       <Setter Property="FontSize" Value="{StaticResource TitleFontSize}"/>
+       <Setter Property="TextColor" Value="{StaticResource BrandColor}"/>
+       <Setter Property="LineBreakMode" Value="MiddleTruncation"/>
+     </Style>
+     <Style TargetType="Label" >
+       <Setter Property="FontSize" Value="25"/>
+       <Setter Property="TextColor" Value="Gray"/>
+       <Setter Property="LineBreakMode" Value="MiddleTruncation"/>
+     </Style>
+     <Style TargetType="Label" BasedOn="{StaticResource TitleStyle}" x:Key="AltertTitle">
+       <Setter Property="FontSize" Value="90"></Setter>
+     </Style>
+     <bologna:Data x:Key="data" Title="corso"></bologna:Data>
+     <DataTemplate x:Key="RecipeDataTemplate">
+       <ViewCell>
+         <Grid>
+           <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="15"/>
+             <ColumnDefinition Width="Auto"/>
+             <ColumnDefinition/>
+           </Grid.ColumnDefinitions>
+           <BoxView BackgroundColor="Green"/>
+           <Label  FontSize="12" Text="{Binding Id}" Grid.Column="1"/>
+
+           <Label FontSize="22" Text="{Binding Name}" Grid.Column="2"/>
+         </Grid>
+       </ViewCell>
+     </DataTemplate>
+   </ResourceDictionary>
+
+  </Application.Resources>
+</Application>
