@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            BindingContext="{Binding Source={StaticResource ViewModelLocator}, Path=DetailsViewModel}"
+             xmlns:teplatesSelector="clr-namespace:Corso.Bologna.TeplatesSelector;assembly=Corso.Bologna"
+             BindingContext="{Binding Source={StaticResource ViewModelLocator}, Path=DetailsViewModel}"
             Title="{Binding Title}"
              x:Class="Corso.Bologna.Views.RecipeDetailsView">
+
   <ContentPage Title="Dettagli">
     <StackLayout>
       <Image Aspect="AspectFill"  Source="{Binding CurrentRecipe.PicturePath}"/>
@@ -13,9 +15,50 @@
 
   </ContentPage>
   <ContentPage Title="Ingredienti">
-    <Label Text="TAB 2"></Label>
+   <ListView ItemsSource="{Binding Ingredients}" Margin="10">
+     <ListView.ItemTemplate>
+       <DataTemplate>
+         <ViewCell>
+           <Label Text="{Binding AggregatedName}"/>
+         </ViewCell>
+       </DataTemplate>
+     </ListView.ItemTemplate>
+   </ListView>
   </ContentPage>
   <ContentPage Title="Preparazione">
-    <Label Text="TAB 3"></Label>
+    <ContentPage.Resources>
+      <ResourceDictionary>
+        <teplatesSelector:StepTypeDataTemplateSelector x:Key="StepTypeDataTemplateSelector">
+          <teplatesSelector:StepTypeDataTemplateSelector.ImageDataTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Image Aspect="AspectFit" HeightRequest="200" Source="{Binding UriValue}"></Image>
+              </ViewCell>
+            </DataTemplate>
+          </teplatesSelector:StepTypeDataTemplateSelector.ImageDataTemplate>
+          <teplatesSelector:StepTypeDataTemplateSelector.TextDataTemplae>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition/>
+                  </Grid.ColumnDefinitions>
+                  <BoxView BackgroundColor="Gray">
+
+                  </BoxView>
+                  <Label Text="{Binding Index}" TextColor="White" VerticalOptions="Start"/>
+                  <Label Text="{Binding Value  }" LineBreakMode="CharacterWrap" Grid.Column="1" />
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </teplatesSelector:StepTypeDataTemplateSelector.TextDataTemplae>
+        </teplatesSelector:StepTypeDataTemplateSelector>
+
+      </ResourceDictionary>
+    </ContentPage.Resources>
+    <ListView ItemTemplate="{StaticResource StepTypeDataTemplateSelector}" ItemsSource="{Binding Steps}" HasUnevenRows="True" Margin="10">
+
+    </ListView>
   </ContentPage>
 </TabbedPage>

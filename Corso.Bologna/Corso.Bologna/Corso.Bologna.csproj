@@ -59,6 +59,7 @@
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Services\IRecipeDetailService.cs" />
     <Compile Include="Services\RecipedetailService.cs" />
+    <Compile Include="TeplatesSelector\StepTypeDataTemplateSelector.cs" />
     <Compile Include="Views\RecipeDetailsView.xaml.cs">
       <DependentUpon>RecipeDetailsView.xaml</DependentUpon>
     </Compile>

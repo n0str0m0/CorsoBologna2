@@ -16,6 +16,7 @@ namespace Corso.Bologna.ViewModels
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<IRecipeService, RecipeService>();
+            SimpleIoc.Default.Register<IRecipeDetailService, RecipedetailService>();
             //SimpleIoc.Default.Register<IRecipeService, FakeRecipeService>();
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<DetailsViewModel>();

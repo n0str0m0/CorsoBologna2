@@ -24,7 +24,8 @@
               ItemTemplate="{StaticResource RecipeTemplateSelector}"
               IsRefreshing="{Binding IsReloading}"
               IsPullToRefreshEnabled="True" 
-              RefreshCommand="{Binding ReloadCommad}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" ItemsSource="{Binding Recipes}" Grid.Row="1" HasUnevenRows="True">
+              RefreshCommand="{Binding ReloadCommad}" 
+              SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" ItemsSource="{Binding Recipes}" Grid.Row="1" HasUnevenRows="True">
 
     </ListView>
     <StackLayout Grid.Row="2">
