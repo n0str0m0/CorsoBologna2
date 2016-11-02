@@ -4,6 +4,7 @@
              xmlns:bologna="clr-namespace:Corso.Bologna;assembly=Corso.Bologna"
              xmlns:viewModels="clr-namespace:Corso.Bologna.ViewModels;assembly=Corso.Bologna"
              xmlns:converters="clr-namespace:Corso.Bologna.Converters;assembly=Corso.Bologna"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Corso.Bologna.App">
   <Application.Resources>
 
@@ -51,7 +52,7 @@
              <ColumnDefinition/>
            </Grid.ColumnDefinitions>
            <BoxView BackgroundColor="{Binding Level, Converter={StaticResource LevelConverter}}"/>
-           <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+           <forms:CachedImage FadeAnimationEnabled="True"  Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
            <Label Grid.Column="2" Text="{Binding Name}"></Label>
          </Grid>
        </ViewCell>
@@ -65,7 +66,7 @@
              <ColumnDefinition/>
            </Grid.ColumnDefinitions>
         
-           <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+           <forms:CachedImage FadeAnimationEnabled="True"  Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
            <Label Grid.Column="2" Text="{Binding Name}"></Label>
          </Grid>
        </ViewCell>
@@ -78,11 +79,14 @@
              <ColumnDefinition Width="Auto"/>
              <ColumnDefinition/>
            </Grid.ColumnDefinitions>
-
-           <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+           
+           <forms:CachedImage FadeAnimationEnabled="True"  Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
           <StackLayout Grid.Column="2">
+           
             <Label  Text="{Binding Name}"></Label>
             <Label  Text="{Binding Level}"></Label>
+         
+           
           </StackLayout>
         
          </Grid>
