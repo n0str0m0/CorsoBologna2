@@ -14,5 +14,20 @@ namespace Corso.Bologna.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            IListViewController listViewController = this.RecipeListView as IListViewController;
+            if (listViewController != null)
+            {
+                listViewController.ScrollToRequested += ListViewControllerOnScrollToRequested;
+            }
+        }
+
+        private void ListViewControllerOnScrollToRequested(object sender, ScrollToRequestedEventArgs scrollToRequestedEventArgs)
+        {
+      
+        }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Services\IRecipeService.cs" />
     <Compile Include="Services\LocalDataSqlRecipeService.cs" />
     <Compile Include="Services\RecipeService.cs" />
+    <Compile Include="TeplatesSelector\RecipeTemplateSelector.cs" />
     <Compile Include="TestStyle.xaml.cs">
       <DependentUpon>TestStyle.xaml</DependentUpon>
     </Compile>

@@ -1,37 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:teplatesSelector="clr-namespace:Corso.Bologna.TeplatesSelector;assembly=Corso.Bologna"
              x:Class="Corso.Bologna.Views.MainView"
              BindingContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <teplatesSelector:RecipeTemplateSelector x:Key="RecipeTemplateSelector" 
+                                               DefaultDataTemplate="{StaticResource DefaultDataTemplate}" 
+                                               MediaDataTemplate="{StaticResource MediaDataTemplate}" 
+                                               NormalDataTemplate="{StaticResource FacileDataTemplate}"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <Grid Padding="10,20,10,20">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition/>
       <RowDefinition Height="Auto" />
+      <RowDefinition Height="20"></RowDefinition>
     </Grid.RowDefinitions>
     <Label Text="{Binding Title}"/>
-    <ListView IsRefreshing="{Binding IsReloading}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding ReloadCommad}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" ItemsSource="{Binding Recipes}" Grid.Row="1" HasUnevenRows="True">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <Grid>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-              </Grid.ColumnDefinitions>
-              <BoxView BackgroundColor="{Binding Level, Converter={StaticResource LevelConverter}}"/>
-              <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
-              <Label Grid.Column="2" Text="{Binding Name}"></Label>
-            </Grid>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
+    <ListView x:Name="RecipeListView"
+              ItemTemplate="{StaticResource RecipeTemplateSelector}"
+              IsRefreshing="{Binding IsReloading}"
+              IsPullToRefreshEnabled="True" 
+              RefreshCommand="{Binding ReloadCommad}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" ItemsSource="{Binding Recipes}" Grid.Row="1" HasUnevenRows="True">
+
     </ListView>
     <StackLayout Grid.Row="2">
       <Label Text="{Binding SelectedRecipe.Name}" />
       <Editor Text="{Binding SelectedIndex}"/>
       <Button Command="{Binding ReloadCommad}" Text="Reload data"></Button>
+    </StackLayout>
+    <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
+      <Button Command="{Binding PagingCommand}" CommandParameter="prev" Text="Prev"/>
+      <Button Command="{Binding PagingCommand}" CommandParameter="next" Text="Next" />
     </StackLayout>
   </Grid>
 </ContentPage>

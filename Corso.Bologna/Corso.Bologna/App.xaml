@@ -41,6 +41,53 @@
          </Grid>
        </ViewCell>
      </DataTemplate>
+
+     <DataTemplate x:Key="DefaultDataTemplate">
+       <ViewCell>
+         <Grid>
+           <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="10"/>
+             <ColumnDefinition Width="Auto"/>
+             <ColumnDefinition/>
+           </Grid.ColumnDefinitions>
+           <BoxView BackgroundColor="{Binding Level, Converter={StaticResource LevelConverter}}"/>
+           <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+           <Label Grid.Column="2" Text="{Binding Name}"></Label>
+         </Grid>
+       </ViewCell>
+     </DataTemplate>
+     <DataTemplate x:Key="FacileDataTemplate">
+       <ViewCell>
+         <Grid BackgroundColor="Green">
+           <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="10"/>
+             <ColumnDefinition Width="Auto"/>
+             <ColumnDefinition/>
+           </Grid.ColumnDefinitions>
+        
+           <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+           <Label Grid.Column="2" Text="{Binding Name}"></Label>
+         </Grid>
+       </ViewCell>
+     </DataTemplate>
+     <DataTemplate x:Key="MediaDataTemplate">
+       <ViewCell>
+         <Grid >
+           <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="10"/>
+             <ColumnDefinition Width="Auto"/>
+             <ColumnDefinition/>
+           </Grid.ColumnDefinitions>
+
+           <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+          <StackLayout Grid.Column="2">
+            <Label  Text="{Binding Name}"></Label>
+            <Label  Text="{Binding Level}"></Label>
+          </StackLayout>
+        
+         </Grid>
+       </ViewCell>
+     </DataTemplate>
    </ResourceDictionary>
 
   </Application.Resources>

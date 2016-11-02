@@ -17,6 +17,7 @@ namespace Corso.Bologna.ViewModels
         private Recipe _selecedRecipe;
         private int _selectedIndex;
         private ICommand _reloadCommand;
+        private ICommand _pagingCommand;
         private IRecipeService _recipeService;
         private bool _isReloading;
 
@@ -24,15 +25,26 @@ namespace Corso.Bologna.ViewModels
         {
             _recipeService = recipeService;
             ReloadCommad = new RelayCommand(LoadDataAsync);
+            PagingCommand = new RelayCommand<string>(Paging);
             Title = nameof(MainViewModel);
             LoadDataAsync();
         }
         public ICommand ReloadCommad { get; private set; }
+        public ICommand PagingCommand { get; private set; }
         public async void LoadDataAsync()
         {
             IsReloading = true;
             Recipes = await _recipeService.GetRecipeAsync();
             IsReloading = false;
+        }
+
+        public void Paging(string param)
+        {
+            if (param == "next")
+            {
+                //
+            }
+            ReloadCommad.Execute(null);
         }
         public string Title { get; set; }
 
