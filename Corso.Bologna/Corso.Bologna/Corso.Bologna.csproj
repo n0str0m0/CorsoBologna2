@@ -51,9 +51,14 @@
     <Compile Include="MasterViews\MasterView.xaml.cs">
       <DependentUpon>MasterView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\RecipeDetail.cs" />
+    <Compile Include="Models\Step.cs" />
     <Compile Include="NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Services\IRecipeDetailService.cs" />
+    <Compile Include="Services\RecipedetailService.cs" />
     <Compile Include="Views\RecipeDetailsView.xaml.cs">
       <DependentUpon>RecipeDetailsView.xaml</DependentUpon>
     </Compile>
