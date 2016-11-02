@@ -29,6 +29,7 @@ namespace Corso.Bologna.UWP
         public App()
         {
             this.InitializeComponent();
+        
             this.Suspending += OnSuspending;
         }
 
