@@ -10,5 +10,6 @@ namespace Corso.Bologna.Services
     public interface IRecipeService
     {
         Task<IList<Recipe>> GetRecipeAsync();
+     
     }
 }

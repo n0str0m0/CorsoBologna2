@@ -16,11 +16,13 @@
           <ViewCell>
             <Grid>
               <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
               </Grid.ColumnDefinitions>
-              <Image Source="{Binding PicturePath}" HeightRequest="100"/>
-              <Label Grid.Column="1" Text="{Binding Name}"></Label>
+              <BoxView BackgroundColor="{Binding Level, Converter={StaticResource LevelConverter}}"/>
+              <Image Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+              <Label Grid.Column="2" Text="{Binding Name}"></Label>
             </Grid>
           </ViewCell>
         </DataTemplate>

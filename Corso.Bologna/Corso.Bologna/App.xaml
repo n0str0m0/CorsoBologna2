@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bologna="clr-namespace:Corso.Bologna;assembly=Corso.Bologna"
              xmlns:viewModels="clr-namespace:Corso.Bologna.ViewModels;assembly=Corso.Bologna"
+             xmlns:converters="clr-namespace:Corso.Bologna.Converters;assembly=Corso.Bologna"
              x:Class="Corso.Bologna.App">
   <Application.Resources>
 
    <ResourceDictionary>
+     <converters:LevelConverter x:Key="LevelConverter"/>    
      <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
      <x:Double x:Key="TitleFontSize">30</x:Double>
      <Color x:Key="BrandColor">Red</Color>
@@ -32,7 +34,7 @@
              <ColumnDefinition Width="Auto"/>
              <ColumnDefinition/>
            </Grid.ColumnDefinitions>
-           <BoxView BackgroundColor="Green"/>
+           <BoxView BackgroundColor="{Binding Level, Converter={StaticResource LevelConverter}}"/>
            <Label  FontSize="12" Text="{Binding Id}" Grid.Column="1"/>
 
            <Label FontSize="22" Text="{Binding Name}" Grid.Column="2"/>

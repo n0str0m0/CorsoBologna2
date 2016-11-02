@@ -10,16 +10,40 @@ using SQLite;
 
 namespace Corso.Bologna.Services
 {
-    public class LocalDataSqlRecipeService: IRecipeService
+    public class LocalDataSqlRecipeService : IRecipeService
     {
         public LocalDataSqlRecipeService()
         {
+            InitDB();
+        }
+
+        public async void InitDB()
+        {
             var rootFolder = FileSystem.Current.LocalStorage;
-          
-            using (SQLiteConnection connection = new SQLiteConnection(Path.Combine(rootFolder.Path, "recipe.db")))
+
+            try
+            {
+                await CeckFile(Path.Combine(rootFolder.Path, "recipe.db"));
+            }
+            catch (FileNotFoundException)
+            {
+
+                Seed(Path.Combine(rootFolder.Path, "recipe.db"));
+            }
+
+           
+        }
+        public async Task  CeckFile(string path)
+        {
+            var filedb = await FileSystem.Current.LocalStorage.GetFileAsync(path);
+
+        }
+        public void Seed(string path)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(path))
             {
                 connection.CreateTable<Recipe>();
-                connection.Insert(new Recipe {id = 3, Name = "pippo"});
+                connection.Insert(new Recipe { id = 3, Name = "pippo" });
                 connection.Commit();
             }
         }
@@ -27,12 +51,11 @@ namespace Corso.Bologna.Services
         public async Task<IList<Recipe>> GetRecipeAsync()
         {
             var rootFolder = FileSystem.Current.LocalStorage;
-            List<Recipe> recipes;
-            recipes = new List<Recipe>();
-            using (SQLiteConnection connection = new SQLiteConnection(Path.Combine(rootFolder.Path, "recipe.db")))
-            {
-               recipes.Add(connection.Find<Recipe>(0));
-            }
+           
+            SQLiteAsyncConnection connection = new SQLiteAsyncConnection(Path.Combine(rootFolder.Path, "recipe.db"));
+           List<Recipe> recipes = new List<Recipe>(await connection.Table<Recipe>().ToListAsync());
+           
+           
             return recipes;
         }
     }
