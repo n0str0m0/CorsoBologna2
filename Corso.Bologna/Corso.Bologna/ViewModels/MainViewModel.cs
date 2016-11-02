@@ -8,6 +8,7 @@ using Corso.Bologna.Models;
 using Corso.Bologna.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 
 namespace Corso.Bologna.ViewModels
 {
@@ -20,12 +21,13 @@ namespace Corso.Bologna.ViewModels
         private ICommand _pagingCommand;
         private IRecipeService _recipeService;
         private bool _isReloading;
-
-        public MainViewModel(IRecipeService recipeService)
+        private INavigationService _navigationService;
+        public MainViewModel(IRecipeService recipeService, INavigationService navigationService)
         {
             _recipeService = recipeService;
             ReloadCommad = new RelayCommand(LoadDataAsync);
             PagingCommand = new RelayCommand<string>(Paging);
+            _navigationService = navigationService;
             Title = nameof(MainViewModel);
             LoadDataAsync();
         }
@@ -54,8 +56,7 @@ namespace Corso.Bologna.ViewModels
             set
             {
                 Set(ref _selecedRecipe, value);
-                _selectedIndex = Recipes.IndexOf(value);
-                RaisePropertyChanged(nameof(SelectedIndex));
+                _navigationService.NavigateTo(PageKeys.DetailsPageKey,value);
             }
         }
 

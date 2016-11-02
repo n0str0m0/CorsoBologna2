@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            BindingContext="{Binding Source={StaticResource ViewModelLocator}, Path=DetailsViewModel}"
+            Title="{Binding Title}"
+             x:Class="Corso.Bologna.Views.RecipeDetailsView">
+  <ContentPage Title="Dettagli">
+    <StackLayout>
+      <Image Aspect="AspectFill"  Source="{Binding CurrentRecipe.PicturePath}"/>
+      <Label Text="{Binding CurrentRecipe.People}"/>
+      <Label Text="{Binding CurrentRecipe.PubDate}"/>
+    </StackLayout>
+
+  </ContentPage>
+  <ContentPage Title="Ingredienti">
+    <Label Text="TAB 2"></Label>
+  </ContentPage>
+  <ContentPage Title="Preparazione">
+    <Label Text="TAB 3"></Label>
+  </ContentPage>
+</TabbedPage>

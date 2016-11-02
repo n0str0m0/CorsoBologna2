@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:teplatesSelector="clr-namespace:Corso.Bologna.TeplatesSelector;assembly=Corso.Bologna"
-             x:Class="Corso.Bologna.Views.MainView"
+             x:Class="Corso.Bologna.Views.MainView" Title="Main View"
              BindingContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}">
   <ContentPage.Resources>
     <ResourceDictionary>

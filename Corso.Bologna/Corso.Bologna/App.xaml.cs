@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Corso.Bologna.ViewModels;
 using Corso.Bologna.Views;
 using Xamarin.Forms;
 
@@ -12,8 +13,15 @@ namespace Corso.Bologna
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainView();
+            NavigationPage navigationPage = new NavigationPage();
+            ViewModelLocator locator = (ViewModelLocator)Resources["ViewModelLocator"];
+            NavigationService formNavigationService = new NavigationService();
+            formNavigationService.Initialize(navigationPage);
+            formNavigationService.Configure(PageKeys.DetailsPageKey, typeof(RecipeDetailsView));
+            locator.SetNavigationService(formNavigationService);
+            navigationPage.PushAsync(new MainView());
+            MainPage = navigationPage;
+            
         }
 
         protected override void OnStart()

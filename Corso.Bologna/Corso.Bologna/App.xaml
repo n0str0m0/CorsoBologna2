@@ -52,7 +52,7 @@
              <ColumnDefinition/>
            </Grid.ColumnDefinitions>
            <BoxView BackgroundColor="{Binding Level, Converter={StaticResource LevelConverter}}"/>
-           <forms:CachedImage FadeAnimationEnabled="True"  Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
+           <forms:CachedImage  FadeAnimationEnabled="True"  Source="{Binding PicturePath}" HeightRequest="100" Grid.Column="1"/>
            <Label Grid.Column="2" Text="{Binding Name}"></Label>
          </Grid>
        </ViewCell>
