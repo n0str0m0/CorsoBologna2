@@ -22,6 +22,10 @@ namespace Corso.Bologna.ViewModels
             SimpleIoc.Default.Register<DetailsViewModel>();
         }
 
+        public T GetInstance<T>()
+        {
+            return ServiceLocator.Current.GetInstance<T>();
+        }
         public void SetNavigationService(INavigationService navigationService)
         {
          SimpleIoc.Default.Register(()=> navigationService);

@@ -9,13 +9,14 @@ using Android.OS;
 using Corso.Bologna.Models;
 using Corso.Bologna.Navite.Droid.Commons;
 using Corso.Bologna.Services;
+using Corso.Bologna.ViewModels;
 using FFImageLoading;
 using FFImageLoading.Views;
 
 namespace Corso.Bologna.Navite.Droid
 {
     [Activity(Label = "Corso.Bologna.Navite.Droid", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity, View.IOnClickListener
+    public class MainActivity : DataActivity<MainViewModel>, View.IOnClickListener
     {
         private TextView _textView;
 
@@ -44,11 +45,12 @@ namespace Corso.Bologna.Navite.Droid
 
         private async void LoadData()
         {
-            var service = new RecipeService();
-            var items = await service.GetRecipeAsync();
+        //    var service = new RecipeService();
+        //    var items = await service.GetRecipeAsync();
+
             var listViewiew = FindViewById<ListView>(Resource.Id.MainView_ListView);
             listViewiew.Adapter = new DataAdatperBase<Recipe>(
-                items,
+                ViewModel.Recipes,
                 this, Resource.Layout.MainView_RecipeList_SimpleRecipeCell,
                 BindViewAction);
         }

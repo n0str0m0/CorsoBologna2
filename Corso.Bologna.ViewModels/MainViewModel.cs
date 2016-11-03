@@ -25,6 +25,7 @@ namespace Corso.Bologna.ViewModels
         public MainViewModel(IRecipeService recipeService, INavigationService navigationService)
         {
             _recipeService = recipeService;
+            Recipes = new List<Recipe>();
             ReloadCommad = new RelayCommand(LoadDataAsync);
             PagingCommand = new RelayCommand<string>(Paging);
             _navigationService = navigationService;

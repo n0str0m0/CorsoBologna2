@@ -49,6 +49,22 @@
       <HintPath>..\packages\Xamarin.FFImageLoading.2.2.1\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\monoandroid1\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\monoandroid1\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19037, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\monoandroid1\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -57,7 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commons\DataActivity.cs" />
     <Compile Include="Commons\DataAdatperBase.cs" />
+    <Compile Include="CorsoApp.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,10 +85,10 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\MainView.axml">
+    <AndroidResource Include="Resources\layout\MainView.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\MainView_RecipeList_SimpleRecipeCell.axml">
+    <AndroidResource Include="Resources\layout\MainView_RecipeList_SimpleRecipeCell.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -91,6 +109,10 @@
     <ProjectReference Include="..\Corso.Bologna.Services\Corso.Bologna.Services.csproj">
       <Project>{5fdae2de-9951-4666-8a3f-f5c1509d6900}</Project>
       <Name>Corso.Bologna.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Corso.Bologna.ViewModels\Corso.Bologna.ViewModels.csproj">
+      <Project>{4eef5f20-d764-4358-bcc1-48b23403d51c}</Project>
+      <Name>Corso.Bologna.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
