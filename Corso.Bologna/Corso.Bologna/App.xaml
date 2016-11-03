@@ -2,14 +2,15 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bologna="clr-namespace:Corso.Bologna;assembly=Corso.Bologna"
-             xmlns:viewModels="clr-namespace:Corso.Bologna.ViewModels;assembly=Corso.Bologna"
+             xmlns:viewModels="clr-namespace:Corso.Bologna.ViewModels;assembly=Corso.Bologna.ViewModels"
              xmlns:converters="clr-namespace:Corso.Bologna.Converters;assembly=Corso.Bologna"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+
              x:Class="Corso.Bologna.App">
   <Application.Resources>
 
    <ResourceDictionary>
-     <converters:LevelConverter x:Key="LevelConverter"/>    
+     <converters:LevelConverter x:Key="LevelConverter"/>
      <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
      <x:Double x:Key="TitleFontSize">30</x:Double>
      <Color x:Key="BrandColor">Red</Color>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Corso.Bologna.Navite.Droid.Corso.Bologna.Navite.Droid" android:versionCode="1" android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="16" />
+	<application android:label="Corso.Bologna.Navite.Droid"></application>
+</manifest>

@@ -51,29 +51,16 @@
     <Compile Include="MasterViews\MasterView.xaml.cs">
       <DependentUpon>MasterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\RecipeDetail.cs" />
-    <Compile Include="Models\Step.cs" />
     <Compile Include="NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Recipe.cs" />
-    <Compile Include="Services\IRecipeDetailService.cs" />
-    <Compile Include="Services\RecipedetailService.cs" />
     <Compile Include="TeplatesSelector\StepTypeDataTemplateSelector.cs" />
     <Compile Include="Views\RecipeDetailsView.xaml.cs">
       <DependentUpon>RecipeDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\IRecipeService.cs" />
-    <Compile Include="Services\LocalDataSqlRecipeService.cs" />
-    <Compile Include="Services\RecipeService.cs" />
     <Compile Include="TeplatesSelector\RecipeTemplateSelector.cs" />
     <Compile Include="TestStyle.xaml.cs">
       <DependentUpon>TestStyle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\DetailsViewModel.cs" />
-    <Compile Include="ViewModels\FakeRecipeService.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -194,6 +181,20 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Corso.Bologna.Models\Corso.Bologna.Models.csproj">
+      <Project>{e95cc85a-a463-49f4-bb09-45e6372cc8b2}</Project>
+      <Name>Corso.Bologna.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Corso.Bologna.Services\Corso.Bologna.Services.csproj">
+      <Project>{5fdae2de-9951-4666-8a3f-f5c1509d6900}</Project>
+      <Name>Corso.Bologna.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Corso.Bologna.ViewModels\Corso.Bologna.ViewModels.csproj">
+      <Project>{4eef5f20-d764-4358-bcc1-48b23403d51c}</Project>
+      <Name>Corso.Bologna.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
