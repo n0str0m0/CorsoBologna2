@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Corso.Bologna.ViewModels
         public MainViewModel(IRecipeService recipeService, INavigationService navigationService)
         {
             _recipeService = recipeService;
-            Recipes = new List<Recipe>();
+            Recipes = new ObservableCollection<Recipe>();
             ReloadCommad = new RelayCommand(LoadDataAsync);
             PagingCommand = new RelayCommand<string>(Paging);
             _navigationService = navigationService;
@@ -37,7 +38,11 @@ namespace Corso.Bologna.ViewModels
         public async void LoadDataAsync()
         {
             IsReloading = true;
-            Recipes = await _recipeService.GetRecipeAsync();
+            var items = await _recipeService.GetRecipeAsync();
+            foreach (var item in items)
+            {
+                Recipes.Add(item);
+            }
             IsReloading = false;
         }
 

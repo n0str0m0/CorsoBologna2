@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using Android.App;
 using Android.Views;
 using Android.Widget;
@@ -15,10 +16,21 @@ namespace Corso.Bologna.Navite.Droid.Commons
         public DataAdatperBase(IList<T> items, Activity activity, int viewID, Action<T,View> bindAction  )
         {
             _items = items;
+            INotifyCollectionChanged iNotifyCollectionChanged = _items as INotifyCollectionChanged;
+            if (iNotifyCollectionChanged != null)
+            {
+                iNotifyCollectionChanged.CollectionChanged += INotifyCollectionChangedOnCollectionChanged;
+            }
             _activity = activity;
             _viewID = viewID;
             _bindAction = bindAction;
         }
+
+        private void INotifyCollectionChangedOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        {
+            this.NotifyDataSetChanged();
+        }
+
         public override long GetItemId(int position)
         {
             return position;
