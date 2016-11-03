@@ -23,16 +23,26 @@ namespace Corso.Bologna.Navite.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            
             SetContentView(Resource.Layout.DeatailsView);
             // Create your application here
             var recipe = CorsoApp.NavigationService.GetAndRemoveParameter<Recipe>(this.Intent);
-
+            ViewModel.CurrentRecipe = recipe;
             var imageView = FindViewById<ImageViewAsync>(Resource.Id.DetailsView_ImageView);
             var textView = FindViewById<TextView>(Resource.Id.DetailsView_NameView);
             textView.Text = recipe.Name;
             ImageService.Instance.LoadUrl(recipe.PicturePath).Into(imageView);
 
+            var listViewiew = FindViewById<ListView>(Resource.Id.DetailsView_IngredientsListView);
+            listViewiew.Adapter = new DataAdatperBase<Ingredient>(
+                ViewModel.Ingredients,
+                this, Android.Resource.Layout.SimpleListItem1,
+                BindViewAction);
+        }
+        private void BindViewAction(Ingredient item, View view)
+        {
+            var ingredientView = (TextView)view;
+            ingredientView.Text = item.Name;
         }
     }
 }

@@ -82,36 +82,36 @@ namespace Corso.Bologna.Navite.Droid
         }
     }
 
-    public class MyAdapter : BaseAdapter<string>
-    {
-        private IList<string> _items;
-        private Activity _context;
-        public MyAdapter(IList<string> items, Activity context)
-        {
-            _items = items;
-            _context = context;
-        }
-        public override long GetItemId(int position)
-        {
-            return position;
-        }
+    //public class MyAdapter : BaseAdapter<string>
+    //{
+    //    private IList<string> _items;
+    //    private Activity _context;
+    //    public MyAdapter(IList<string> items, Activity context)
+    //    {
+    //        _items = items;
+    //        _context = context;
+    //    }
+    //    public override long GetItemId(int position)
+    //    {
+    //        return position;
+    //    }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
-        {
-            var view = (TextView)_context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
-            view.Text = _items[position];
-            return view;
-        }
+    //    public override View GetView(int position, View convertView, ViewGroup parent)
+    //    {
+    //        var view = (TextView)_context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
+    //        view.Text = _items[position];
+    //        return view;
+    //    }
 
-        public override int Count
-        {
-            get { return _items.Count; }
-        }
+    //    public override int Count
+    //    {
+    //        get { return _items.Count; }
+    //    }
 
-        public override string this[int position]
-        {
-            get { return _items[position]; }
-        }
-    }
+    //    public override string this[int position]
+    //    {
+    //        get { return _items[position]; }
+    //    }
+    //}
 }
 

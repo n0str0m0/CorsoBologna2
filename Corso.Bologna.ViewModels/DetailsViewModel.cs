@@ -7,7 +7,8 @@ using Corso.Bologna.Models;
 using Corso.Bologna.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 namespace Corso.Bologna.ViewModels
 {
     public class DetailsViewModel: ViewModelBase
@@ -16,13 +17,14 @@ namespace Corso.Bologna.ViewModels
         private string _title;
         private INavigationService _navigationService;
         private IRecipeDetailService _recipeDetailService;
-        private List<Ingredient> _ingredients;
-        private List<Step> _steps;
+        private IList<Ingredient> _ingredients;
+        private IList<Step> _steps;
 
         public DetailsViewModel(INavigationService navigationService, IRecipeDetailService recipeDetailService)
         {
             _navigationService = navigationService;
             _recipeDetailService = recipeDetailService;
+            Ingredients = new ObservableCollection<Ingredient>();
         }
         public string Title
         {
@@ -41,13 +43,13 @@ namespace Corso.Bologna.ViewModels
             }
         }
 
-        public List<Ingredient> Ingredients
+        public IList<Ingredient> Ingredients
         {
             get { return _ingredients; }
             set { Set(ref _ingredients, value); }
         }
 
-        public List<Step> Steps
+        public IList<Step> Steps
         {
             get { return _steps; }
             set { Set(ref _steps, value); }
@@ -56,7 +58,11 @@ namespace Corso.Bologna.ViewModels
         private async void LoadRecipeAsync()
         {
             var details = await _recipeDetailService.GetRecipeDetailAsync(CurrentRecipe.id);
-            Ingredients = new List<Ingredient>(details.Ingredients);
+            Ingredients.Clear();
+            foreach (var item in details.Ingredients)
+            {
+                Ingredients.Add(item);
+            }
             Steps = new List<Step>(details.Steps);
         }
     }
