@@ -17,6 +17,7 @@ namespace Corso.Bologna.Navite.Droid
     public static class   CorsoApp
     {
         private static ViewModelLocator _viewModelLocator;
+        private static NavigationService _navigationService;
         public static ViewModelLocator Locator
         {
             get
@@ -24,12 +25,17 @@ namespace Corso.Bologna.Navite.Droid
                 if (_viewModelLocator == null)
                 {
                     _viewModelLocator = new ViewModelLocator();
-                    var navigationService = new NavigationService();
-                    navigationService.Configure(PageKeys.DetailsPageKey, typeof(MainActivity));
-                    _viewModelLocator.SetNavigationService(navigationService);
+                    _navigationService = new NavigationService();
+                    _navigationService.Configure(PageKeys.DetailsPageKey, typeof(DetailsActivity));
+                    _viewModelLocator.SetNavigationService(_navigationService);
                 }
                 return _viewModelLocator;
             }
+        }
+
+        public static NavigationService NavigationService
+        {
+            get { return _navigationService; }
         }
     }
 }

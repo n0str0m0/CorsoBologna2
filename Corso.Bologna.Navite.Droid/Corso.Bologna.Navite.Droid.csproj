@@ -76,6 +76,7 @@
     <Compile Include="Commons\DataActivity.cs" />
     <Compile Include="Commons\DataAdatperBase.cs" />
     <Compile Include="CorsoApp.cs" />
+    <Compile Include="DetailsActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +90,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\MainView_RecipeList_SimpleRecipeCell.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\DeatailsView.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

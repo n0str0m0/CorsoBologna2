@@ -49,10 +49,17 @@ namespace Corso.Bologna.Navite.Droid
         //    var items = await service.GetRecipeAsync();
 
             var listViewiew = FindViewById<ListView>(Resource.Id.MainView_ListView);
+            listViewiew.ItemClick += ListViewiewOnItemClick;
+            listViewiew.Clickable = true;
             listViewiew.Adapter = new DataAdatperBase<Recipe>(
                 ViewModel.Recipes,
                 this, Resource.Layout.MainView_RecipeList_SimpleRecipeCell,
                 BindViewAction);
+        }
+
+        private void ListViewiewOnItemClick(object sender, AdapterView.ItemClickEventArgs itemClickEventArgs)
+        {
+            ViewModel.SelectedRecipe = ViewModel.Recipes[itemClickEventArgs.Position];
         }
 
         private void BindViewAction(Recipe item, View view)

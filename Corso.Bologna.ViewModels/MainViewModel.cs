@@ -38,6 +38,7 @@ namespace Corso.Bologna.ViewModels
         public async void LoadDataAsync()
         {
             IsReloading = true;
+            Recipes.Clear();
             var items = await _recipeService.GetRecipeAsync();
             foreach (var item in items)
             {
@@ -73,6 +74,7 @@ namespace Corso.Bologna.ViewModels
             {
                 if (Recipes != null)
                 {
+                    if(Recipes.Count > 0)
                     SelectedRecipe = Recipes[value];
                 }
                 Set(ref _selectedIndex, value);
